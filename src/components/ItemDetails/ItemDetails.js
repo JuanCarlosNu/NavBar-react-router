@@ -1,9 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import courses from "../../data.json";
 import "./ItemDetails.css";
 
 const ItemDetails = props => {
-  const course = courses.find(c => c.id === Number(props.match.params.id));
+  const courseID = props.match.params.id;
+  const course = courses.find(c => c.id === Number(courseID)); // we are turning the id that we got from the link to a number, cause it was a string and didnt match the json file property
 
   return (
     <div className="item__details">
@@ -16,7 +18,9 @@ const ItemDetails = props => {
       </div>
 
       <div className="item__details--content">
+        <Link to={`/courses/${course.id}`}  >
         <h4 className="course__title-d">{course.title}</h4>
+        </Link>
         <p className='course__desc-d'>{course.desc}</p>
         <span className="course__author-d">By: {course.author}</span>
         <span className="course__price-d">{course.price}$</span>
