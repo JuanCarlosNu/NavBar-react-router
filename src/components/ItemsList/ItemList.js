@@ -23,7 +23,8 @@ handleChange = event=> {
  } 
  
   render(){ 
-    const filtered = this.state.courses.filter(c => c.title.includes(this.state.inputSearch))
+  
+    const filtered = this.state.courses.filter(c => c.title.toLowerCase().includes( this.state.inputSearch.toLowerCase()))
      return (
      <div className="ItemList">
       <form className="search__form">
@@ -32,7 +33,7 @@ handleChange = event=> {
      
 
     <div className="courses">
-
+  
       {filtered.map(course => (
         <Item key={course.id} course={course} />
       ))}
