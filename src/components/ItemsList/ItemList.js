@@ -3,16 +3,23 @@ import courses from "../../data.json";
 import Item from "../Item/Item.js";
 import "./ItemList.css";
 
-const ItemList = () => {
+class ItemList extends React.Component {
+  constructor(){
+    super()
+    this.state= {
+      courses
+
+    }
+
+  }
  
-  if (courses.length === 0) return "no items found";
-  return (
+  render(){  return (
     <div className="courses">
-      {courses.map(course => (
+      {this.state.courses.map(course => (
         <Item key={course.id} course={course} />
       ))}
     </div>
-  );
+  )}  ;
 };
 
 export default ItemList;
